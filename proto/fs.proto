@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package proto;
+option go_package = ".;proto";
+
+service FileService {
+  rpc Upload(FSReq) returns (FSResp) {}
+}
+
+message FSReq {
+  string dstDir = 1;
+  string projName =2;
+  string name = 3;
+  int32 projType = 4;
+  bool ifReboot =5;
+  string hash = 6;
+  int64 filelen = 7;
+  bytes file = 8;
+}
+
+message FSResp {
+  bool status = 1;
+  string message = 2;
+}
+
